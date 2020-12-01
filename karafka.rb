@@ -27,6 +27,7 @@ APP_LOADER.eager_load
 class KarafkaApp < Karafka::App
   setup do |config|
     config.backend = :inline
+    
     # config.kafka.seed_brokers = %W[#{KAFKA_HOSTS}]
     config.kafka.seed_brokers = ['kafka://127.0.0.1:9092']
     config.client_id = "hoofprint"

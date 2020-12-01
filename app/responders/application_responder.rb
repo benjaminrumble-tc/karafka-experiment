@@ -14,7 +14,7 @@ end
 class HoofprintResponder < ApplicationResponder
   topic :example2
   def respond(message)
-    "puts responding to example2"
+    puts "responding to example2"
     processed_message = self.do_something(message)
     respond_to :example2, processed_message
   end
