@@ -8,6 +8,9 @@ end
 
 
 class HoofprintConsumer < ApplicationConsumer
+  def initialize(&process_message)
+    super
+  end
   def consume
     puts "consuming from #{topic.name}"
     puts "message is #{params.payload}"

@@ -4,3 +4,19 @@ run:
 
 test:
 	bundle exec rspec
+
+
+build:
+	docker build -t tucowsinc/karafkaexperiment .
+
+run-docker: build
+	docker run \
+	-e KAFKA_HOST=${KAFKA_HOST} \
+	tucowsinc/karafkaexperiment
+
+test-docker: build
+	docker run \
+	--network host \
+	-e KAFKA_HOST=${KAFKA_HOST} \
+	tucowsinc/karafkaexperiment \
+	exec rspec

@@ -7,6 +7,8 @@
 ENV['RACK_ENV'] ||= 'development'
 ENV['KARAFKA_ENV'] ||= ENV['RACK_ENV']
 KAFKA_HOSTS = ENV['KAFKA_HOSTS']
+puts "KAFKA_HOSTS #{KAFKA_HOSTS}"
+
 Bundler.require(:default, ENV['KARAFKA_ENV'])
 
 # Zeitwerk custom loader for loading the app components before the whole
@@ -27,9 +29,9 @@ APP_LOADER.eager_load
 class KarafkaApp < Karafka::App
   setup do |config|
     config.backend = :inline
-    
-    # config.kafka.seed_brokers = %W[#{KAFKA_HOSTS}]
-    config.kafka.seed_brokers = ['kafka://127.0.0.1:9092']
+    puts "KAFKA_HOSTS #{ENV['KAFKA_HOSTS']}"
+    config.kafka.seed_brokers = [ENV['KAFKA_HOSTS']]
+    # config.kafka.seed_brokers = ['kafka://127.0.0.1:9092']
     config.client_id = "hoofprint"
   end
 

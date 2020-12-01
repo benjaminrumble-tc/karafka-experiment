@@ -1,8 +1,14 @@
 
 require_relative '../app/responders/application_responder'
 
+
+def test_process_message(message)
+  puts "in test_process_message with #{message}"
+  return {"fake" => "message", "processed" => true}
+end
+
 RSpec.describe HoofprintResponder do
-  subject(:responder) { described_class.new }
+  subject(:responder) { described_class.new(:test_process_message) }
   describe 'supported topics' do
     describe 'example1' do
       let(:topic) { described_class.topics['example2'] }
