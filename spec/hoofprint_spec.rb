@@ -8,7 +8,7 @@ def test_process_message(message)
 end
 
 RSpec.describe HoofprintResponder do
-  subject(:responder) { described_class.new(:test_process_message) }
+  subject(:responder) { described_class.new  }
   describe 'supported topics' do
     describe 'example1' do
       let(:topic) { described_class.topics['example2'] }

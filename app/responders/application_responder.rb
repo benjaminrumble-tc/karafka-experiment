@@ -15,16 +15,16 @@ class HoofprintResponder < ApplicationResponder
   topic :example2
   # attr_accessor :process_message
 
-  def initialize(process_message_symbol)
-    puts "initialize HoofprintResponder #{process_message_symbol}"
-    @process_message_func = method(process_message_symbol)
-    super()
-  end
+  # def initialize(&process_method)
+  #   puts "initialize HoofprintResponder #{process_method}"
+  #   @process_message = process_method
+  #   super()
+  # end
 
   def respond(message)
     puts "responding to example2"
-    processed_message = @process_message_func.call(message)
-    # processed_message = {"fake"=>"message", "processed" => true}
+    # processed_message = @process_message.call(message)
+    processed_message = {"fake"=>"message", "processed" => true}
     respond_to :example2, processed_message
   end
 
