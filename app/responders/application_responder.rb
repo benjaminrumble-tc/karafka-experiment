@@ -4,6 +4,7 @@
 # You can rename it if it would conflict with your current code base (in case you're integrating
 # Karafka with other frameworks)
 require 'karafka'
+require 'securerandom'
 class ApplicationResponder < Karafka::BaseResponder
   # This method needs to be implemented in each of the responders
   # def respond(data)
@@ -25,7 +26,7 @@ class HoofprintResponder < ApplicationResponder
     puts "responding to example2"
     # processed_message = @process_message.call(message)
     processed_message = {"fake"=>"message", "processed" => true}
-    respond_to :example2, processed_message
+    respond_to :example2, processed_message, key: SecureRandom.uuid 
   end
 
   def do_something(message)
